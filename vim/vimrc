@@ -30,9 +30,9 @@ filetype plugin indent on    " required " To ignore plugin indent changes, inste
 " -----------------------------------------------------------------
 
 " vim配置
-syntax on  " 语法高亮
+syntax on           " 语法高亮
 syntax enable
-filetype on "检测文件的类型
+filetype on         " 检测文件的类型
 filetype plugin on
 filetype plugin indent on
 
@@ -80,14 +80,14 @@ set backspace=indent,eol,start
 
 " --------------------------------------------------------
 
-"自动补全
+" 自动补全
 inoremap ( ()<ESC>i
 inoremap { {}<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 
-"窗口切换
+" 窗口切换
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
