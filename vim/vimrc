@@ -1,0 +1,125 @@
+" vundle配置
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required " To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" -----------------------------------------------------------------
+
+" vim配置
+syntax on  " 语法高亮
+syntax enable
+filetype on "检测文件的类型
+filetype plugin on
+filetype plugin indent on
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+set nocompatible    "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
+
+set number          " 显示行号
+set hlsearch        " 高亮搜索
+set incsearch       " 搜索输入高亮
+set ignorecase      " 搜索时忽略大小写
+set smartcase       " 搜索中含有大写则搜索大写
+set nobackup        " 关闭备份
+set autoindent 	    " 自动缩进
+set smartindent     " 智能缩进
+set cindent         " C/C++风格缩进
+set showmatch       " 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
+set vb t_vb=        " 当vim进行编辑时，如果命令错误，会发出一个响声，该设
+set foldenable      " 开始折叠
+set nobackup        " 关闭备份
+set wildmenu        " 自动补全命令时候使用菜单式匹配列表
+set numberwidth=6   " 设置行号宽度
+
+set expandtab       " tab转化为4个空格
+set shiftwidth=4
+set tabstop=4
+set smarttab
+
+set history=400     " vim记住的历史操作的数量，默认的是20
+set autoread        " 当文件在外部被修改时，自动重新读取
+"set mouse=a         " 在所有模式下都允许使用鼠标，还可以是n,v,i,c等
+set laststatus=2    " 显示状态栏
+set ruler           " 状态栏显示行号列号
+
+set background=dark
+colorscheme molokai               "set colorscheme
+set t_Co=256
+
+set backspace=indent,eol,start
+
+"set cursorcolumn    " 高亮光标所在列
+"set cursorline      " 高亮光标所在行
+
+" --------------------------------------------------------
+
+"自动补全
+inoremap ( ()<ESC>i
+inoremap { {}<ESC>i
+inoremap [ []<ESC>i
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+
+"窗口切换
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" ---------------------------------------------------------
+
+" YouCompleteMe配置
+set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    "回车即选中当前项
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist= ['!~/disk/work/routing/*', '~/*']
+let g:ycm_complete_in_comments = 1                                  "注释补全
+let g:ycm_complete_in_strings = 1                                   "字符串补全
+let g:ycm_seed_identifiers_with_syntax = 1                          "关键字语法补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0         "注释和字符串中的文字也会被收入补全
+let g:ycm_enable_diagnostic_highlighting = 0                        "关闭语法错误高亮提示
+let g:ycm_enable_diagnostic_signs = 0                               "关闭语法错误行前面的'>>'提示
+let g:ycm_seed_identifiers_with_syntax = 0
+let g:ycm_disable_for_files_larger_than_kb = 0                      "关闭文件大小限制, 默认是1000, 设为0代表关闭
+
+" ---------------------------------------------------------
+
+" ultisnips配置
+let g:UltiSnipsExpandTrigger="<c-o>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" 定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
+let g:UltiSnipsSnippetDirectories=["my_snippets", "bundle/ultisnips"]
+
+" ---------------------------------------------------------
+
+" 识别新类型文件后缀名
+au BufNewFile,BufRead *.hrp set filetype=cpp
