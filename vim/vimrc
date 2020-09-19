@@ -36,6 +36,9 @@ filetype on         " 检测文件的类型
 filetype plugin on
 filetype plugin indent on
 
+let $LANG='en'
+set langmenu=en
+
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
